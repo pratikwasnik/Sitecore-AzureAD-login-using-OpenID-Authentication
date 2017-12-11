@@ -1,0 +1,19 @@
+﻿
+
+
+<!DOCTYPE html>
+
+<html>
+<head>  
+</head>
+<body>
+    <div>
+        @Html.Sitecore().Placeholder("phmain")
+        
+            @if (Sitecore.Context.User.IsAuthenticated) { 
+                @Html.ActionLink("Signout", "CallSignOut", "Sample");
+            }
+        
+    </div>
+</body>
+</html>

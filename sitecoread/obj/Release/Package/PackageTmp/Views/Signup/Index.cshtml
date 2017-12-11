@@ -1,0 +1,40 @@
+﻿<div>
+    Username : <span>@Html.TextBox("Username")</span>
+    <p>
+        Password : <span>@Html.TextBox("Password")</span>
+    </p> 
+</div>
+
+<input id="btnSubmit" type="submit" value="Submit" />
+After Clicking your details will appear below
+<div id="divDetails"></div>
+
+
+<head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        $("#btnSubmit").click(function () {            
+            var userID = $("#Username").val();
+            var pwd = $("#Password").val();
+        $.ajax({
+            url: '@Url.Action("GoToLogin", "Signup")',
+            type: "POST",                       
+            data: { UsernameValue: userID, PwdValue: pwd },
+            dataType: "json",
+            success: function (data) {
+                var divContent = data.UserID + "<br/>" + data.Pwd;
+                $("#divDetails").html(divContent);
+            },
+            error: function () { alert("error");}
+        });
+    });
+    </script>
+</head>
+
+
+
+
+
+
+
